@@ -4,6 +4,28 @@ OpenSearch Query DSL (Domain Specific Language) is the most powerful way to quer
 
 ---
 
+## 🏗️ Search Flow Architecture
+
+Unlike the simple UI-based KQL, the Query DSL interaction often happens directly between a client (or Dashboard) and the Indexer's REST API.
+
+```mermaid
+sequenceDiagram
+    participant A as Analyst / Automation Script
+    participant D as Wazuh Dashboard
+    participant I as Wazuh Indexer (OpenSearch)
+
+    A->>D: UI Query (KQL)
+    D->>I: Internal DSL Translation (JSON)
+    I-->>D: Result Set
+    D-->>A: Visual Results
+
+    Note over A,I: Direct API Interaction (Expert Mode)
+    A->>I: POST /_search { "query": { "bool": ... } }
+    I-->>A: raw_json_response
+```
+
+---
+
 ## 🏗️ Core Query DSL Components
 
 ### 1. The `bool` Query

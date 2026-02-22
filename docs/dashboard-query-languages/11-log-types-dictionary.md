@@ -4,6 +4,32 @@ This document provides a comprehensive lookup for the most common log sources in
 
 ---
 
+## 🔄 The Normalization Flow
+
+Wazuh takes unstructured or semi-structured logs and transforms them into the **Elastic Common Schema (ECS)**-inspired JSON format.
+
+```mermaid
+graph TD
+    Raw[Raw Log: SSHD Failure for root from 1.2.3.4]
+    M[Wazuh Manager]
+    D[Decoder: SSHD]
+    R[Rule: 5710]
+    JSON[JSON Alert]
+
+    Raw --> M
+    M --> D
+    D -->|Extract Fields| R
+    R -->|Assign ID & Level| JSON
+    
+    subgraph "Final Result"
+    JSON --> F1["data.srcip: 1.2.3.4"]
+    JSON --> F2["data.dstuser: root"]
+    JSON --> F3["rule.id: 5710"]
+    end
+```
+
+---
+
 ## 🖥️ Windows Logs (Sysmon & Event Channel)
 
 Wazuh normalizes Windows events into the `data.win` object.

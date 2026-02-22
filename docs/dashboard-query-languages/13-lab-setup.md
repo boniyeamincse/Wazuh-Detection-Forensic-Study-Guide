@@ -4,6 +4,29 @@ To effectively study the queries and forensic techniques in this guide, you need
 
 ---
 
+## 🏗️ Lab Architecture (Docker)
+
+When deploying via Docker, the services interact over an internal virtual network. Understanding this helps in troubleshooting connectivity between the Dashboard and Indexer.
+
+```mermaid
+graph LR
+    subgraph "Docker Host"
+        W[Wazuh Manager]
+        I[Wazuh Indexer]
+        D[Wazuh Dashboard]
+        V1[(Alert Data)]
+        V2[(Indexer Data)]
+    end
+
+    U[User Browser] ---|HTTPS 443| D
+    D <-->|API 9200| I
+    W -->|Alert Log| I
+    W --- V1
+    I --- V2
+```
+
+---
+
 ## 🐋 Option 1: Docker Compose (Recommended)
 This is the fastest method for most researchers. It deploys the Wazuh Indexer, Server, and Dashboard in minutes.
 

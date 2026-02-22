@@ -14,6 +14,18 @@ The Wazuh Dashboard is the visualization layer of the Wazuh SIEM. It is built up
 3.  **Wazuh Manager:** Processes events from agents, applies rules, and sends alerts to the indexer.
 4.  **Wazuh API:** Provides programmatic access to the manager and indexer.
 
+### 🌐 End-to-End Data Pipeline
+
+```mermaid
+graph LR
+    A[Endpoint Agent] -->|Raw Event| M[Wazuh Manager]
+    M -->|Decoding & Rules| B(JSON Alert)
+    B -->|Filebeat/DSI| I[Wazuh Indexer]
+    I -->|Stored Index| D[Wazuh Dashboard]
+    U[Analyst] -->|KQL Query| D
+    D -->|Request| I
+```
+
 ---
 
 ## 📊 Index Patterns
