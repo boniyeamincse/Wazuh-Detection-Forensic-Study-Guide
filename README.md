@@ -18,35 +18,26 @@ This repository is a **Structured Study Guide** for mastering Wazuh Dashboard qu
 
 ---
 
-## 🧭 The Learning Path (Index)
+## 🧭 Repository Index (The Learning Path)
 
-The documentation is divided into four critical domains to guide your study from zero to forensic expert.
+This repository is structured as a comprehensive curriculum. Follow the modules in order or jump to specific topics using the index below.
 
-### 📍 Domain 1: The Fundamentals
-Master how Wazuh processes data and the most intuitive query language.
-1.  **[01. Architecture & Alert Structure](docs/dashboard-query-languages/01-overview.md)** - Indexers, Index patterns, and JSON structures.
-2.  **[02. KQL Master Guide](docs/dashboard-query-languages/02-kql-master.md)** - **150+ queries** for baseline Windows/Linux detection.
-3.  **[11. Log Types & Field Mapping](docs/dashboard-query-languages/11-log-types-dictionary.md)** - Understanding how your logs are normalized.
-
-### 📍 Domain 2: Super-User Syntax
-Master the technical power of Regex and JSON-based advanced querying.
-4.  **[03. Lucene Advanced Guide](docs/dashboard-query-languages/03-lucene-advanced.md)** - **100+ queries** focusing on Regex and Fuzzy logic.
-5.  **[04. OpenSearch Query DSL](docs/dashboard-query-languages/04-opensearch-dsl.md)** - Master JSON queries and API automation.
-
-### 📍 Domain 3: Proactive Hunting & Forensics
-Transition from alert triage to proactive threat discovery.
-6.  **[05. Threat Hunting Pack](docs/dashboard-query-languages/05-threat-hunting-pack.md)** - **MITRE ATT&CK** mapped hunting logic.
-7.  **[10. Deep Forensic Querying](docs/dashboard-query-languages/10-forensic-analysis.md)** - Persistence, Registry, and Network forensics.
-8.  **[12. Investigative Commands Library](docs/dashboard-query-languages/12-investigative-commands.md)** - What commands to hunt for (and why).
-
-### 📍 Domain 4: Enterprise Operations & Labs
-Scale your skills for billion-event environments and hands-on practice.
-9.  **[06. SOC Playbooks](docs/dashboard-query-languages/06-soc-playbooks.md)** - Scenario walkthroughs: Ransomware, Breach, Lateral Movement.
-10. **[07. Performance & Scaling](docs/dashboard-query-languages/07-performance-tuning.md)** - Optimized querying for high-volume SOCs.
-11. **[08. Common Mistakes](docs/dashboard-query-languages/08-common-mistakes.md)** - The "What NOT to do" guide.
-12. **[09. Quick Reference](docs/dashboard-query-languages/09-quick-reference.md)** - One-page mid-incident rapid lookup.
-13. **[13. Wazuh Lab Setup Guide](docs/dashboard-query-languages/13-lab-setup.md)** - Build your own Docker or OVA lab.
-14. **[14. External Learning Resources](docs/dashboard-query-languages/14-learning-resources.md)** - Where to go next for Blue Team mastery.
+| # | Module Name | Primary Focus | Level | Link |
+| :-- | :--- | :--- | :--- | :--- |
+| **01** | [Architecture Overview](docs/dashboard-query-languages/01-overview.md) | Wazuh Architecture & Alert JSON | 🟢 Beginner | [Module 01](docs/dashboard-query-languages/01-overview.md) |
+| **02** | [KQL Master Guide](docs/dashboard-query-languages/02-kql-master.md) | 150+ Detection Queries (Win/Linux) | 🔵 Intermediate | [Module 02](docs/dashboard-query-languages/02-kql-master.md) |
+| **03** | [Lucene Advanced Guide](docs/dashboard-query-languages/03-lucene-advanced.md) | Regex, Fuzzy, & Proximity Search | 🔴 Advanced | [Module 03](docs/dashboard-query-languages/03-lucene-advanced.md) |
+| **04** | [OpenSearch Query DSL](docs/dashboard-query-languages/04-opensearch-dsl.md) | JSON-based Queries & API Automation | ⚛️ Expert | [Module 04](docs/dashboard-query-languages/04-opensearch-dsl.md) |
+| **05** | [Threat Hunting Pack](docs/dashboard-query-languages/05-threat-hunting-pack.md) | MITRE ATT&CK Mapped Queries | 🎯 Hunter | [Module 05](docs/dashboard-query-languages/05-threat-hunting-pack.md) |
+| **06** | [SOC Playbooks](docs/dashboard-query-languages/06-soc-playbooks.md) | Investigation Scenarios (Ransomware/Breach) | 📋 Analyst | [Module 06](docs/dashboard-query-languages/06-soc-playbooks.md) |
+| **07** | [Performance & Scaling](docs/dashboard-query-languages/07-performance-tuning.md) | Optimization for Large SOCs | ⚡ Ops | [Module 07](docs/dashboard-query-languages/07-performance-tuning.md) |
+| **08** | [Common Mistakes](docs/dashboard-query-languages/08-common-mistakes.md) | Troubleshooting & Pitfalls | ⚠️ Ops | [Module 08](docs/dashboard-query-languages/08-common-mistakes.md) |
+| **09** | [Quick Reference](docs/dashboard-query-languages/09-quick-reference.md) | One-Page Syntax & Templates | ⚡ Rapid | [Module 09](docs/dashboard-query-languages/09-quick-reference.md) |
+| **10** | [Forensic Analysis](docs/dashboard-query-languages/10-forensic-analysis.md) | Persistence & Deep Forensics | 🔍 Forensic | [Module 10](docs/dashboard-query-languages/10-forensic-analysis.md) |
+| **11** | [Log Types Dictionary](docs/dashboard-query-languages/11-log-types-dictionary.md) | Field Mappings (Sysmon/SSH/Web) | 📘 Study | [Module 11](docs/dashboard-query-languages/11-log-types-dictionary.md) |
+| **12** | [Investigative Commands](docs/dashboard-query-languages/12-investigative-commands.md) | Suspicious OS Command Hunting | 🛠️ Hunt | [Module 12](docs/dashboard-query-languages/12-investigative-commands.md) |
+| **13** | [Wazuh Lab Setup](docs/dashboard-query-languages/13-lab-setup.md) | Docker Compose & OVA Deployment | 🧪 Lab | [Module 13](docs/dashboard-query-languages/13-lab-setup.md) |
+| **14** | [External Resources](docs/dashboard-query-languages/14-learning-resources.md) | Official Training & Community Labs | 🔗 Mastery | [Module 14](docs/dashboard-query-languages/14-learning-resources.md) |
 
 ---
 
