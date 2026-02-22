@@ -2,6 +2,10 @@
 
 This document provides a technical overview of the Wazuh Dashboard architecture, its integration with OpenSearch, and how security events are structured and indexed.
 
+## TL;DR
+
+- High-level explanation of the Wazuh data pipeline, index patterns, and alert field mappings. Useful for analysts who need to translate alerts into queries quickly.
+
 ---
 
 ## 🏗️ Architecture Overview
