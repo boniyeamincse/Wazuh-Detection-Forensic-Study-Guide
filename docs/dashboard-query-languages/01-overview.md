@@ -93,3 +93,9 @@ Wazuh/OpenSearch uses two main string types:
 
 ## 🏢 Multi-Tenant Considerations
 In large organizations, Wazuh supports **OpenSearch Multi-Tenancy**. This allows different SOC teams (e.g., Regional SOC vs Global SOC) to see only their relevant alerts using **Rule-Based Access Control (RBAC)** applied at the indexer level.
+
+---
+
+**Next Module: [02 - KQL Complete Master Guide](02-kql-master.md)**
+
+[Return to Index](../../README.md)

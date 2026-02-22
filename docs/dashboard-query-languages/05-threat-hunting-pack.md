@@ -59,4 +59,8 @@ Detect logins from countries where your company does not have offices.
 ---
 
 ## 🚀 Pro-Tip: The "Rareness" Filter
-In the Wazuh Dashboard, use a "Terms" aggregation on `data.win.eventdata.image` and **sort by Ascending**. The processes with the fewest hits are your primary hunting targets.
+---
+
+**Previous: [04 - OpenSearch Query DSL](04-opensearch-dsl.md)** | **Next: [06 - SOC Playbooks](06-soc-playbooks.md)**
+
+[Return to Index](../../README.md)

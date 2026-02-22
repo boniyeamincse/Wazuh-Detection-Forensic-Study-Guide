@@ -143,4 +143,8 @@ curl -X GET "https://localhost:9200/wazuh-alerts-*/_search?pretty" \
 ---
 
 ## 💡 Pro-Tip: Filter vs Must
-Detection Engineers should **ALWAYS use `filter`** instead of `must` for fields like `rule.id`, `agent.id`, and `srcip`. Scores are irrelevant in SOC triage, and filters are significantly faster and lighter on the indexer's resources.
+---
+
+**Previous: [03 - Lucene Advanced Guide](03-lucene-advanced.md)** | **Next: [05 - Threat Hunting Pack](05-threat-hunting-pack.md)**
+
+[Return to Index](../../README.md)

@@ -63,3 +63,9 @@ To validate your SOC's visibility, run these "canary" commands and ensure they t
 
 ## 🚀 Pro-Tip: The "Pivot" Workflow
 When you find a suspicious process ID (`data.win.eventdata.processId`), immediately add a filter for that ID. You will see every action that specific process took, creating a clear timeline of the attacker's actions.
+
+---
+
+**Previous: [05 - Threat Hunting Pack](05-threat-hunting-pack.md)** | **Next: [07 - Performance & Scaling](07-performance-tuning.md)**
+
+[Return to Index](../../README.md)

@@ -73,3 +73,9 @@ Then pivot to that parent ID to find out who started the malicious process (e.g.
 Once you find a forensic artifact (e.g., a file arrival at 10:05 AM), run this query to see EVERYTHING that happened on that host within a 2-minute window:
 `agent.id: "001" AND timestamp: ["2024-02-22T10:04:00Z" TO "2024-02-22T10:07:00Z"]`
 This reveals the attacker's "footprints" before and after the specific event.
+
+---
+
+**Previous: [09 - Quick Reference](09-quick-reference.md)** | **Next: [11 - Log Types Dictionary](11-log-types-dictionary.md)**
+
+[Return to Index](../../README.md)

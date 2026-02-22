@@ -79,3 +79,9 @@ Wazuh uses its own naming convention but follows some Elastic Common Schema (ECS
 To see the exact field names available for YOUR specific environment, use the **Dev Tools** in the Wazuh Dashboard and run:
 `GET /wazuh-alerts-*/_mapping`
 This will show you every field name and its type (`keyword`, `text`, `integer`).
+
+---
+
+**Previous: [10 - Forensic Analysis](10-forensic-analysis.md)** | **Next: [12 - Investigative Commands](12-investigative-commands.md)**
+
+[Return to Index](../../README.md)

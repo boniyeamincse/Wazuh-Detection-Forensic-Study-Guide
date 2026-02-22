@@ -61,3 +61,9 @@ Ensure you are monitoring the right event channels:
 
 ## 🚀 Study Tip: "Generate & Hunt"
 Once your lab is up, run some of the **[Module 12 Investigative Commands](12-investigative-commands.md)** on your victim agent. Then, wait 30 seconds and try to find the resulting alerts in the Wazuh Dashboard using the queries from **[Module 02](02-kql-master.md)**.
+
+---
+
+**Previous: [12 - Investigative Commands](12-investigative-commands.md)** | **Next: [14 - Learning Resources](14-learning-resources.md)**
+
+[Return to Index](../../README.md)

@@ -62,8 +62,13 @@ Disable auto-refresh on dashboards with complex aggregations. Allow analysts to 
 ---
 
 ## 🛠️ Performance Audit Query
-To find the slowest queries in your environment, use the OpenSearch **Task Management API**:
 ```bash
 curl -X GET "https://localhost:9200/_tasks?actions=*search&detailed" -k -u admin:admin
 ```
 This will list all running search tasks and the time they have been active.
+
+---
+
+**Previous: [06 - SOC Playbooks](06-soc-playbooks.md)** | **Next: [08 - Common Mistakes](08-common-mistakes.md)**
+
+[Return to Index](../../README.md)

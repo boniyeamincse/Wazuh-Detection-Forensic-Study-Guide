@@ -38,3 +38,7 @@ To become a master detection engineer, you must look beyond queries and understa
 
 ---
 **Build your lab, run your tests, and never stop hunting.**
+
+---
+
+**Previous: [13 - Lab Setup Guide](13-lab-setup.md)** | **[Return to Index](../../README.md)**

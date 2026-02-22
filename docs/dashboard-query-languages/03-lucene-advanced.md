@@ -73,3 +73,9 @@ Finds words within a specific distance of each other. Uses `~` with a number.
 | **Proximity** | `"word1 word2"~5` | Not Supported |
 | **Boosting** | `field: val^2` | Not Supported |
 | **Auto-complete** | Minimal | High |
+
+---
+
+**Previous: [02 - KQL Complete Master Guide](02-kql-master.md)** | **Next: [04 - OpenSearch Query DSL](04-opensearch-dsl.md)**
+
+[Return to Index](../../README.md)

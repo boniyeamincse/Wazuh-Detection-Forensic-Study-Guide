@@ -79,3 +79,9 @@ Instead of searching for a single command, search for a **sequence**. An attacke
 }
 ```
 *(Search for one, then pivot to the time window to find the others).*
+
+---
+
+**Previous: [11 - Log Types Dictionary](11-log-types-dictionary.md)** | **Next: [13 - Lab Setup Guide](13-lab-setup.md)**
+
+[Return to Index](../../README.md)

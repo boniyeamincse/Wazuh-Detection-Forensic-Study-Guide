@@ -59,3 +59,9 @@ If your query returns no results but you KNOW the data is there:
 2.  **Check the Index Pattern:** Are you looking in `wazuh-alerts-*` when the data is in `wazuh-archives-*`?
 3.  **Check for Hidden Characters:** Copy-pasting from some editors can introduce non-printing characters.
 4.  **Verify Field Mapping:** Use the "Dev Tools" in Dashboards to check the mapping: `GET /wazuh-alerts-*/_mapping`.
+
+---
+
+**Previous: [07 - Performance & Scaling](07-performance-tuning.md)** | **Next: [09 - Quick Reference](09-quick-reference.md)**
+
+[Return to Index](../../README.md)

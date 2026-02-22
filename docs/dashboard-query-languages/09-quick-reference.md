@@ -59,3 +59,9 @@ A high-density reference guide for SOC analysts who need rapid lookup of query s
 For high-speed triage, always use the filter:
 `@timestamp: [now-15m TO now]`
 This keeps the search space small and the dashboard snappy.
+
+---
+
+**Previous: [08 - Common Mistakes](08-common-mistakes.md)** | **Next: [10 - Forensic Analysis](10-forensic-analysis.md)**
+
+[Return to Index](../../README.md)
