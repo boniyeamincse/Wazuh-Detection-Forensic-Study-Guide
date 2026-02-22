@@ -92,3 +92,7 @@ This guide is open-source under the MIT License. If you find a useful query, ple
 
 **Developed for the Cybersecurity Community**
 *Version 1.2 - The Author & Mastery Edition*
+
+## TL;DR
+
+- A concise, hands-on curriculum for learning Wazuh Dashboard querying, log analysis, and forensic workflows. Start with Module 01 (overview) and follow modules in order for practical examples and production-ready queries.
