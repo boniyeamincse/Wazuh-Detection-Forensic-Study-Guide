@@ -42,9 +42,27 @@ Even experienced analysts make mistakes that lead to empty results or performanc
 - **Result:** This treats the levels as strings, which might fail or produce incorrect results in a numeric sort.
 - **Fix:** Do not quote numbers in ranges: `rule.level: [10 TO 15]`.
 
+### ❌ 6. Case Sensitivity in Keywords
+KQL is case-insensitive for some operations, but Lucene and DSL are **strictly case-sensitive** for `.keyword` fields.
+- **Wrong:** `agent.name.keyword: "Windows-Server"` (if the actual name is `windows-server`)
+- **Fix:** Always check the exact case in the Discover tab.
+
 ---
 
-## ❌ 6. The "Analyzed" Field Trap
+## 🛠️ Deep Troubleshooting: Mapper Parsing Exception
+
+This is the most common error when a new log source is added. It happens when two different logs send different data types for the same field.
+
+**Case:** `data.id` is expected to be a `long` (number), but a log sends "N/A" (string).
+- **Result:** The Indexer rejects the log entirely.
+- **Fix:** 
+    1. Check `GET /wazuh-alerts-*/_mapping` to find the conflicting field.
+    2. Create a **Custom Mapping** or use a **Wazuh Decoder** to force the field into a specific type.
+    3. Re-index the data or wait for the next index creation (midnight).
+
+---
+
+## ❌ 7. The "Analyzed" Field Trap
 
 **The Mistake:** Trying to aggregate on a `text` field (like `full_log`).
 - **Error:** "Fielddata is disabled on text fields by default."

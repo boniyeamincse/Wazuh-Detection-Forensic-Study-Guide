@@ -82,6 +82,22 @@ Ensure you are monitoring the right event channels:
 
 ---
 
+## 📈 Single-Node Resource Tuning
+
+If your lab is slow, apply these settings to your `docker-compose.yml` or VM.
+
+1.  **JVM Heap Size:** Set `INDEXER_JAVA_OPTS` to at least `-Xms2g -Xmx2g` (50% of your RAM).
+2.  **Shard Optimization:** For small labs, use 1 primary shard and 0 replicas for all indices:
+    `SET /_settings { "index": { "number_of_replicas": 0 } }`
+3.  **Disable Heavy Modules:** If you aren't testing Cloud, disable the `aws-s3` and `azure-logs` modules to save CPU.
+
+## 🔐 Security Header Hardening
+For production-like environments, ensure the Dashboard serves secure headers.
+- **CSP:** Add `server.csp.rules` to `opensearch_dashboards.yml` to prevent XSS.
+- **SSL/TLS:** Always use at least TLS 1.2 for the Dashboard-to-Indexer communication.
+
+---
+
 ## 🚀 Study Tip: "Generate & Hunt"
 Once your lab is up, run some of the **[Module 12 Investigative Commands](12-investigative-commands.md)** on your victim agent. Then, wait 30 seconds and try to find the resulting alerts in the Wazuh Dashboard using the queries from **[Module 02](02-kql-master.md)**.
 

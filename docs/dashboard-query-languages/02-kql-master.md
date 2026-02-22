@@ -81,6 +81,22 @@ data.win.eventdata.targetUserName: "Administrator"
 - **T1003 (OS Credential Dumping):** `data.win.eventdata.targetImage: "*\\lsass.exe" AND rule.id: 61612`
 - **T1021 (Remote Services):** `rule.id: 60106 AND data.win.eventdata.logonType: 10`
 
+### E. Advanced Registry & Network Anomaly (KQL)
+
+#### Registry Persistence & Tampering
+1.  **Sticky Keys Backdoor:** `data.win.eventdata.targetObject: "*\\Image File Execution Options\\sethc.exe"`
+2.  **User Init Injection:** `data.win.eventdata.targetObject: "*\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Userinit*"`
+3.  **Shell Context Menu Extension:** `data.win.eventdata.targetObject: "*\\ContextMenuHandlers\\*"`
+4.  **Service ImagePath Tampering:** `data.win.eventdata.targetObject: "*\\Control\\Services\\*\\ImagePath"`
+5.  **Disable UAC via Registry:** `data.win.eventdata.targetObject: "*\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\EnableLUA" AND data.win.eventdata.details: "DWORD (0x00000000)"`
+
+#### Network Behavioral Hunting
+6.  **Suspicious Port (Non-Standard HTTP):** `data.win.eventdata.destinationPort: (8080 OR 8443 OR 8000) AND NOT data.win.eventdata.image: "*proxy.exe"`
+7.  **DNS Query for .onion / .top:** `data.win.eventdata.queryName: ("*.onion" OR "*.top" OR "*.xyz")`
+8.  **High Volume Null Sessions:** `rule.id: 60106 AND data.win.eventdata.logonType: 3 AND data.win.eventdata.targetUserName: "ANONYMOUS LOGON"`
+9.  **RDP Tunneling over SSH:** `data.win.eventdata.image: "plink.exe" AND data.win.eventdata.commandLine: "* -R *"`
+10. **Internal Port Scanning Pattern:** `rule.id: 60103 AND NOT data.win.eventdata.destinationPort: (135 OR 445)`
+
 ---
 
 ## ⚙️ Advanced KQL Tips

@@ -54,6 +54,19 @@ Finds words within a specific distance of each other. Uses `~` with a number.
 
 ---
 
+## 🧬 Dual-Binary Proximity Hunting
+
+Advanced attackers often use two separate binaries in quick succession (e.g., `cmd.exe` followed by `bitsadmin.exe`). Lucene's proximity operator can hunt for these patterns in the `full_log` or aggregated command fields.
+
+- **Hunt for 'cmd' and 'bitsadmin' within 5 words:**
+  `data.win.eventdata.commandLine: "cmd bitsadmin"~5`
+- **Hunt for 'python' and 'socket' in reverse shell attempts:**
+  `data.linux.command: "python socket"~3`
+- **Hunt for 'certutil' and 'urlcache' proximity:**
+  `data.win.eventdata.commandLine: "certutil urlcache"~2`
+
+---
+
 ## ⚠️ Performance Caveats
 
 > [!WARNING]

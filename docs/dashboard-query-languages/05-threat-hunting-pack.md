@@ -56,9 +56,21 @@ Detect logins from countries where your company does not have offices.
 3.  **Analyze Command Lines:** Look for `powershell`, `cmd`, or `curl` inside the task.
 4.  **Pivot to Agent:** Use `agent.name` to see all other activity on that host within +/- 30 minutes.
 
+### 📍 Hunt 3: Impact & Resource Development (Advanced)
+
+These tactics focus on how attackers disrupt operations or build infrastructure for future attacks.
+
+| Technique | Intent | Wazuh Query / Hunting Logic |
+| :--- | :--- | :--- |
+| **T1485** | Data Destruction | `data.win.eventdata.image: ("vssadmin.exe" OR "wbadmin.exe") AND data.win.eventdata.commandLine: "*delete*"` |
+| **T1490** | Inhibit Recovery | `data.win.eventdata.image: "bcdedit.exe" AND data.win.eventdata.commandLine: "*ignoreallfailures*"` |
+| **T1491** | Defacement | `data.file: "*" AND (data.file: "*.html" OR data.file: "*.php") AND NOT data.user: "www-data"` |
+| **T1583** | Acquire Infrastructure | `data.aws.eventName: "PurchaseReservedInstancesOffering" OR data.aws.eventName: "RequestSpotInstances"` |
+| **T1588** | Obtain Capabilities | `data.win.eventdata.image: ("rclone.exe" OR "mega.exe") AND data.win.eventdata.commandLine: "*config*"` |
+
 ---
 
-## 🚀 Pro-Tip: The "Rareness" Filter
+## 📈 Hunting Tip: Time-Series Anomalies
 ---
 
 **Previous: [04 - OpenSearch Query DSL](04-opensearch-dsl.md)** | **Next: [06 - SOC Playbooks](06-soc-playbooks.md)**

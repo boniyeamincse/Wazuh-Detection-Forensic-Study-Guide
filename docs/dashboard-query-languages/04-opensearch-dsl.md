@@ -108,6 +108,48 @@ Aggregations allow you to group data and perform calculations (e.g., "Top 10 Sou
 }
 ```
 
+### ⚡ Pipeline Aggregations (Detecting "Burst" Alerts)
+Pipeline aggregations act on the output of other aggregations. This is useful for detecting sudden spikes in alert volume.
+
+```json
+{
+  "size": 0,
+  "aggs": {
+    "alerts_per_minute": {
+      "date_histogram": {
+        "field": "timestamp",
+        "fixed_interval": "1m"
+      }
+    },
+    "alert_spike_detection": {
+      "derivative": {
+        "buckets_path": "alerts_per_minute._count"
+      }
+    }
+  }
+}
+```
+
+---
+
+## 💎 Scripted (Runtime) Fields
+In OpenSearch, you can use **Painless scripts** to create fields on the fly. This is useful for calculating a "Risk Score" during a query.
+
+```json
+{
+  "query": { "match_all": {} },
+  "runtime_mappings": {
+    "event_risk_score": {
+      "type": "long",
+      "script": {
+        "source": "emit(doc['rule.level'].value * 10)"
+      }
+    }
+  },
+  "fields": ["event_risk_score"]
+}
+```
+
 ---
 
 ## 🧪 Detection Engineering Examples

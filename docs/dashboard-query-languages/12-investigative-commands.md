@@ -82,6 +82,28 @@ Instead of searching for a single command, search for a **sequence**. An attacke
 
 ---
 
+## 📤 Exfiltration & Data Transfer
+
+Hunting for the "Final Stage" of an attack.
+
+| Tool / Intent | Wazuh Query / Hunting Logic |
+| :--- | :--- |
+| **Rclone (S3/Cloud)** | `data.win.eventdata.image: "*rclone.exe" AND data.win.eventdata.commandLine: "*copy*"` |
+| **Mega.nz Upload** | `data.win.eventdata.image: "*MEGAcmd.exe" OR data.win.eventdata.image: "*MEGAsync.exe"` |
+| **Certutil Download** | `data.win.eventdata.image: "certutil.exe" AND data.win.eventdata.commandLine: "*-urlcache*"` |
+| **Ingress Tool** | `data.win.eventdata.image: "bitsadmin.exe" AND data.win.eventdata.commandLine: "*/transfer*"` |
+
+## 🛠️ Advanced Recon & Discovery
+
+| Command | Intent | Wazuh Query |
+| :--- | :--- | :--- |
+| **Adfind.exe** | AD Recon | `data.win.eventdata.image: "*adfind.exe"` |
+| **BloodHound** | AD Pathfinding | `data.win.eventdata.image: "*SharpHound.exe"` |
+| **Whoami /all** | Token Discovery | `data.win.eventdata.commandLine: "whoami /all"` |
+| **Net View** | Network Share Recon | `data.win.eventdata.commandLine: "net view *"` |
+
+---
+
 **Previous: [11 - Log Types Dictionary](11-log-types-dictionary.md)** | **Next: [13 - Lab Setup Guide](13-lab-setup.md)**
 
 [Return to Index](../../README.md)

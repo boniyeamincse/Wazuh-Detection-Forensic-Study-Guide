@@ -55,6 +55,28 @@ A high-density reference guide for SOC analysts who need rapid lookup of query s
 
 ---
 
+## 🛠️ Wazuh API Quick Shortcuts
+
+The Wazuh API is essential for advanced management. Perform these actions from any terminal with `curl`.
+
+| Action | API Endpoint | Purpose |
+| :--- | :--- | :--- |
+| **List Agents** | `GET /agents` | Check status of all protected hosts |
+| **Agent Config** | `GET /agents/{id}/config/viz/ossec` | View remote `ossec.conf` |
+| **Last Scan** | `GET /syscollector/{id}/packages` | List all software on an agent |
+| **Trigger Scan** | `PUT /syscollector/{id}/scan` | Force a vulnerability scan |
+
+## 🧬 SOC-Standard Regex Library
+
+Use these in Module 03 (Lucene) or the Search Bar for high-fidelity hunting.
+
+1.  **Sussuspicious Base64 (long):** `/[A-Za-z0-9+\/]{100,}/`
+2.  **Hex-encoded PowerShell:** `/powershell.*-e(nc(odedcommand)?)? [A-Za-z0-9+/=]+/`
+3.  **Internal IPv4 Leak:** `/10\.\d{1,3}\.\d{1,3}\.\d{1,3}/`
+4.  **Suspicious PHP upload:** `/move_uploaded_file\(.*\)/`
+
+---
+
 ## 🚀 Pro-Tip: The "Golden Interval"
 For high-speed triage, always use the filter:
 `@timestamp: [now-15m TO now]`

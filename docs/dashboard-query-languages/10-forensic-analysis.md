@@ -57,6 +57,22 @@ Hunt for periodic connections to the same IP.
 
 ---
 
+## 🌐 Browsing History & Web Forensics
+
+Attackers often use browsers to download tools or access C2 panels. Wazuh monitors browser-related files if configured in `ossec.conf`.
+
+### 1. Chrome/Edge History Activity
+- **Scenario:** Attacker uses a compromised session to download `mimikatz.exe`.
+- **Query:** `data.file: "*History" AND full_log: "*mimikatz*"`
+- **Note:** Requires FIM (File Integrity Monitoring) enabled for the user's `AppData\Local\Google\Chrome\User Data\Default` directory.
+
+### 2. Service Persistence (Windows)
+- **Scenario:** A new malicious service is created to survive reboots.
+- **Query:** `rule.id: 60101 AND data.win.eventdata.serviceName: "*"`
+- **Analysis:** Look at `data.win.eventdata.imagePath` for binaries in `C:\Users\Public` or `C:\Temp`.
+
+---
+
 ## 🧬 Process Lineage Hunting
 
 To understand the **Root Cause**, you must follow the process parent-child relationship.

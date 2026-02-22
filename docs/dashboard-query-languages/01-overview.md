@@ -103,6 +103,25 @@ Wazuh/OpenSearch uses two main string types:
 
 ---
 
+## 🛡️ Vulnerability Detection Architecture
+
+Wazuh goes beyond log analysis with its **Syscollector** module, which feeds the Vulnerability Detector.
+
+```mermaid
+graph LR
+    A[Agent] -->|Package List/OS Info| M[Wazuh Manager]
+    M -->|Syscollector| VD[Vulnerability Detector]
+    NVD[NVD/Canonical/Debian CVE Feed] -->|Update| VD
+    VD -->|Match Found| I[Wazuh Indexer]
+    I -->|Alert| D[Dashboard]
+```
+
+1.  **Syscollector**: A task running on the agent that scans the OS for installed packages, hotfixes, and open ports.
+2.  **CVE Feeds**: The manager downloads up-to-date vulnerability data from the National Vulnerability Database (NVD) and OS vendors.
+3.  **Vulnerability Detector**: Compares agent data against the feeds. When a match occurs, a vulnerability alert (Level 7+) is generated.
+
+---
+
 ## 🏢 Multi-Tenant Considerations
 In large organizations, Wazuh supports **OpenSearch Multi-Tenancy**. This allows different SOC teams (e.g., Regional SOC vs Global SOC) to see only their relevant alerts using **Rule-Based Access Control (RBAC)** applied at the indexer level.
 

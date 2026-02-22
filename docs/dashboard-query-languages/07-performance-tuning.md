@@ -59,9 +59,27 @@ Disable auto-refresh on dashboards with complex aggregations. Allow analysts to 
 | **Field Mapping** | Disable `text` indexing for fields that only need exact match (`keyword`). |
 | **Refresh Interval** | Increase index refresh interval (e.g., to 30s) to improve ingest performance. |
 
+- **Optimization:** Use filtered aliases (`wazuh-alerts-production`) instead of querying the entire cluster.
+
+## 📦 Data Tiering: Rollups & Force Merge
+
+In high-volume environments, storing raw alerts for 1 year is too expensive. Use these strategies to balance cost and speed.
+
+### 1. Index Rollup (Summarization)
+Instead of storing every 4624 (Login) event, roll them up into a "Daily Login Count" per user.
+- **Benefit:** Reduces storage by 90% for long-term reporting.
+- **Tool:** Use the **Index Management** UI or API in OpenSearch.
+
+### 2. Force Merge (Read-Only Speed)
+Once an index is closed for writing (e.g., yesterday's index), merge the shards to improve read performance.
+```bash
+# Force merge an old index to 1 segment
+curl -X POST "https://localhost:9200/wazuh-alerts-4.x-2024.02.21/_forcemerge?max_num_segments=1" -k -u admin:admin
+```
+
 ---
 
-## 🛠️ Performance Audit Query
+## 📈 Performance Monitoring
 ```bash
 curl -X GET "https://localhost:9200/_tasks?actions=*search&detailed" -k -u admin:admin
 ```

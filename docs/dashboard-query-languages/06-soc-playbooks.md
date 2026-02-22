@@ -62,7 +62,22 @@ To validate your SOC's visibility, run these "canary" commands and ensure they t
 ---
 
 ## 🚀 Pro-Tip: The "Pivot" Workflow
-When you find a suspicious process ID (`data.win.eventdata.processId`), immediately add a filter for that ID. You will see every action that specific process took, creating a clear timeline of the attacker's actions.
+When you find a suspicious process ID (`data.win.eventdata.processId`), immediately add a filter for that ID. You will see every action-   **Next Steps:** Isolate the target, search for matching IPs in `wazuh-archives-*` to find the initial entry point.
+
+### 📍 Playbook 11: Log4Shell (CVE-2021-44228) Post-Exploitation
+-   **Trigger:** Detection of `${jndi:ldap://...` in web logs or suspicious Java child processes.
+-   **Analysis:**
+    1.  `data.url: "*jndi:ldap*" OR data.user_agent: "*jndi:ldap*"`
+    2.  Check for Java spawning shell: `data.win.eventdata.parentImage: "*\\java.exe" AND data.win.eventdata.image: ("cmd.exe" OR "powershell.exe")`
+-   **Next Steps:** Check for outbound LDAP (389) or RMI (1099) traffic from the application server.
+
+### 📍 Playbook 12: Silent Cryptomining Detection
+-   **Trigger:** High CPU usage alerts for extended periods with unknown processes.
+-   **Analysis:**
+    1.  `data.win.eventdata.image: ("xmrig.exe" OR "minerd.exe")`
+    2.  Network connections to Stratum pools: `data.win.eventdata.destinationPort: (3333 OR 4444 OR 14444)`
+    3.  Check for `ld.so.preload` tampering on Linux to hide the miner.
+-   **Next Steps:** Terminate the process and check for persistence via Scheduled Tasks or Crontab.
 
 ---
 

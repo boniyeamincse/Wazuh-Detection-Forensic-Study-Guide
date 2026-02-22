@@ -32,9 +32,21 @@ To become a master detection engineer, you must look beyond queries and understa
 
 ---
 
-## 🌟 Community & Socials
--   **[Wazuh Slack/Discord](https://wazuh.com/community/)**: Ask questions and share your own queries with the community.
--   **[Reddit r/Wazuh](https://www.reddit.com/r/Wazuh/)**: Community-driven support and news.
+## 🧪 Top Detection Engineering Repositories
+
+Stay ahead of the curve by following these industry-standard repositories:
+
+1.  **[Sigma HQ](https://github.com/SigmaHQ/sigma)**: The "Generic" query language. Most Sigma rules can be converted to Wazuh Lucene/DSL.
+2.  **[SOC Prime](https://socprime.com/)**: Large library of community-driven detection rules.
+3.  **[Atomic Red Team](https://github.com/redcanaryco/atomic-red-team)**: The best library for **generating** logs to test your queries.
+
+## 🎓 Career & Certification Paths
+
+- **Wazuh Certified Engineer (WCE)**: The official certification for deployment and administration.
+- **SANS SEC511**: Continuous Monitoring and Security Operations.
+- **Blue Team Level 1 (BTL1)**: Hands-on SOC analyst certification (excellent use of SIEM).
+
+---
 
 ---
 **Build your lab, run your tests, and never stop hunting.**

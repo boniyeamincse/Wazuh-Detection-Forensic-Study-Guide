@@ -101,6 +101,31 @@ Wazuh uses its own naming convention but follows some Elastic Common Schema (ECS
 
 ---
 
+## ☸️ Kubernetes Audit & Container Logs
+
+Wazuh integrates with Kubernetes via `k8s-audit` logs.
+
+| K8s Topic | Wazuh Field | Example Value |
+| :--- | :--- | :--- |
+| **User** | `data.k8s.user.username` | `kubernetes-admin` |
+| **Verb** | `data.k8s.verb` | `create`, `delete` |
+| **Resource** | `data.k8s.objectRef.resource` | `pods`, `secrets` |
+| **Decision** | `data.k8s.annotations.authorization.k8s.io/decision` | `allow`, `forbid` |
+
+## ☁️ Cloud & Office 365 Expansion
+
+### 1. Azure AD / Entra ID
+- **Logon Attempt:** `data.azure.operationName: "Sign-in activity"`
+- **User Principal:** `data.azure.properties.userPrincipalName`
+- **Result Status:** `data.azure.properties.status.errorCode` (e.g., `50126` for wrong password).
+
+### 2. Office 365 (SaaS)
+- **File Download:** `data.office365.Operation: "FileDownloaded"`
+- **Internal Sharing:** `data.office365.Operation: "SharingSet"`
+- **External Email Forwarding:** `data.office365.Operation: "Set-Mailbox" AND data.office365.Parameters: "*Forwarding*"`
+
+---
+
 ## 🚀 Study Tip: Using `_mapping`
 To see the exact field names available for YOUR specific environment, use the **Dev Tools** in the Wazuh Dashboard and run:
 `GET /wazuh-alerts-*/_mapping`
