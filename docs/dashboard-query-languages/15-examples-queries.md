@@ -1,102 +1,38 @@
-# Examples & Queries for Wazuh Dashboard
+# The Daily SOC Hunter's Checklist ⚡
 
-This page collects practical topics, short examples, and ready-to-run queries you can paste into the Wazuh Dashboard `Discover` or `Search` panels (use the `wazuh-alerts-*` index pattern).
+A lean, high-speed reference for common "Triage" and "Hunting" activities. Copy and paste these directly into the Wazuh Dashboard search bar.
 
-## TL;DR
+## 🚨 Tier 1: Critical Triage (First 15 Mins)
 
-- Quick, copy-paste KQL, Lucene, and OpenSearch DSL examples for common detections and dashboard visualizations.
+| Objective | KQL Query |
+| :--- | :--- |
+| **All Level 12+ Alerts** | `rule.level: >= 12` |
+| **Successful Logins (Admin)** | `rule.id: 60106 AND data.win.eventdata.targetUserName: "Administrator"` |
+| **Failed Logins (Spike)** | `rule.id: 60122 AND rule.level: > 10` |
+| **New User Created** | `rule.id: (60113 OR 5710)` |
+| **Defender Disabled** | `data.win.eventdata.targetObject: "*DisableRealtimeMonitoring*" AND data.win.eventdata.details: "0x00000001"` |
 
-## Topics Covered
+## 🔍 Tier 2: Behavioral Hunting (Deep Dive)
 
-- Failed authentication (SSH/Winlogon)
-- Suspicious process creation (Sysmon)
-- PowerShell / Commandline detections
-- Lateral movement indicators (SMB, RDP)
-- Aggregations for dashboards (top IPs, rule levels)
+| Objective | Lucene / Regex Query |
+| :--- | :--- |
+| **Suspicious Powershell** | `data.win.eventdata.image: "*powershell.exe" AND data.win.eventdata.commandLine: /.*-e(nc)? .*/` |
+| **LOLBIN Execution** | `data.win.eventdata.image: ("*certutil.exe" OR "*mshta.exe" OR "*regsvr32.exe")` |
+| **Network Discovery** | `data.win.eventdata.commandLine: ("*net view*" OR "*nltest /domain_trusts*")` |
+| **Data Exfiltration** | `data.win.eventdata.image: ("*rclone.exe" OR "*mega.exe")` |
 
-## How to use
+## ☸️ Tier 3: Cloud & Container Ops
 
-- Open the Wazuh Dashboard > Discover. Select the `wazuh-alerts-*` index pattern. Paste a KQL query into the search bar and run it. For Lucene or DSL, switch query language accordingly.
-
----
-
-## KQL Examples
-
-- Failed SSH authentication (high-level):
-
-```
-rule.groups: "sshd" and rule.level >= 7
-```
-
-- Failed SSH authentication (specific user):
-
-```
-rule.groups: "sshd" and data.user: "root" and rule.level >= 7
-```
-
-- Suspicious process creation (Windows Sysmon):
-
-```
-data.win.eventid: 1 and data.process_name: "powershell.exe" and data.process_cmdline: "*-EncodedCommand*"
-```
-
-- Command-line containing suspicious tools (Linux):
-
-```
-data.process_name: "bash" and data.process_cmdline: "*nc *" or data.process_cmdline: "*curl *--output*"
-```
+| Objective | KQL Query |
+| :--- | :--- |
+| **K8s Secret Access** | `data.k8s.objectRef.resource: "secrets" AND data.k8s.verb: "get"` |
+| **Azure Login Fail** | `data.azure.operationName: "Sign-in activity" AND data.azure.properties.status.errorCode: 50126` |
+| **AWS IAM Changes** | `data.aws.eventName: ("CreateUser" OR "PutUserPolicy")` |
 
 ---
 
-## Lucene Examples
-
-- Failed SSH (Lucene):
-
-```
-rule.groups:"sshd" AND rule.level:[7 TO *]
-```
-
-- Suspicious process creation (Lucene):
-
-```
-data.win.eventid:1 AND data.process_name:"powershell.exe" AND data.process_cmdline:/EncodedCommand/
-```
-
----
-
-## OpenSearch Query DSL (JSON) — Failed SSH example
-
-```
-{
-  "query": {
-    "bool": {
-      "must": [
-        { "match": { "rule.groups": "sshd" }},
-        { "range": { "rule.level": { "gte": 7 }}}
-      ]
-    }
-  }
-}
-```
-
-Paste this JSON into the Dashboard dev tools or use it with the OpenSearch API to reproduce the same filter programmatically.
-
----
-
-## Aggregations & Dashboard widgets (ideas)
-
-- Top 10 source IPs triggering alerts: use a `Terms` aggregation on `data.srcip.keyword`.
-- Alert volume over time: `Date Histogram` on `@timestamp` or `timestamp`.
-- Rule level distribution: `Terms` on `rule.level` (or `Histogram` for numeric buckets).
-- Hosts with most alerts: `Terms` on `agent.name.keyword`.
-
-## Quick Tips
-
-- Always use `.keyword` fields for aggregation and exact matches (e.g., `agent.name.keyword`).
-- When testing queries, widen time range to "Last 90 days" to get more results in low-volume environments.
-- Save useful searches and pin them to dashboards as panels.
-
-- Run a spellcheck and lint across docs to standardize style.
+## 🚀 Speed Tip
+Save your most frequent queries using the **"Save"** button at the top of the Discover tab. Pin them to your "Morning Triage" dashboard for 1-click visibility.
 
 ---
 

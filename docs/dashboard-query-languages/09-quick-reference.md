@@ -28,19 +28,15 @@ A high-density reference guide for SOC analysts who need rapid lookup of query s
 
 ---
 
-## 🕵️ SOC Rapid Investigation Templates
+---
 
-### 1. The "Attacker Pivot" (Find all from IP)
-`data.srcip: "1.2.3.4" OR data.win.eventdata.ipAddress: "1.2.3.4" OR data.aws.sourceIPAddress: "1.2.3.4"`
+## 🕵️ SOC Investigation & Checklists
 
-### 2. The "Host Triage" (Critical events on 1 Host)
-`agent.name: "Prod-DB-01" AND rule.level: >= 12`
+For a lean, high-speed list of copy-paste triage and hunting activities, refer to the specialized modules:
+- **[Module 15 - Daily SOC Hunter's Checklist](15-examples-queries.md)**: Tiered triage and hunting.
+- **[Module 16 - Windows Auth & Lateral Movement](16-rdp-smb-windows-auth.md)**: Targeted AD/Logon hunts.
 
-### 3. The "Account Sweep" (Where did this user login?)
-`data.win.eventdata.targetUserName: "jdoe" OR data.linux.user: "jdoe" OR data.aws.userIdentity.userName: "jdoe"`
-
-### 4. The "LOLBIN Hunt" (Suspicious binaries)
-`data.win.eventdata.image: ("*\\powershell.exe" OR "*\\cmd.exe" OR "*\\certutil.exe" OR "*\\mshta.exe" OR "*\\regvsvr32.exe")`
+---
 
 ---
 

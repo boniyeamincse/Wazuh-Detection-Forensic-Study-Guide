@@ -75,9 +75,9 @@ This repository is structured as a comprehensive curriculum. Follow the modules 
 | **13** | [Wazuh Lab Setup](docs/dashboard-query-languages/13-lab-setup.md) | Docker Compose & OVA Deployment | 🧪 Lab | [Module 13](docs/dashboard-query-languages/13-lab-setup.md) |
 | **14** | [External Resources](docs/dashboard-query-languages/14-learning-resources.md) | Official Training & Community Labs | 🔗 Mastery | [Module 14](docs/dashboard-query-languages/14-learning-resources.md) |
 | **15** | [Examples & Queries](docs/dashboard-query-languages/15-examples-queries.md) | Practical KQL/Lucene/DSL examples | ⚡ Rapid | [Module 15](docs/dashboard-query-languages/15-examples-queries.md) |
-| **16** | [RDP/SMB & Windows Auth](docs/dashboard-query-languages/16-rdp-smb-windows-auth.md) | Windows auth & lateral movement queries | 🔵 Intermediate | [Module 16](docs/dashboard-query-languages/16-rdp-smb-windows-auth.md) |
+| **16** | [Windows Auth & Lateral Movement](docs/dashboard-query-languages/16-rdp-smb-windows-auth.md) | Dedicated RDP/SMB/AD hunting queries | 🔵 Intermediate | [Module 16](docs/dashboard-query-languages/16-rdp-smb-windows-auth.md) |
 | **17** | [Wazuh Admin Cheatsheet](docs/wazuh-admin-cheatsheet.md) | Manager, Agent, API & Indexer commands | 🛠️ Admin | [Cheatsheet](docs/wazuh-admin-cheatsheet.md) |
-| **20** | [DQL & Dashboard Query Languages](docs/dashboard-query-languages/20-dql-guide.md) | Complete guide to KQL/Lucene/DSL and dashboards | 🧭 All Levels | [Module 20](docs/dashboard-query-languages/20-dql-guide.md) |
+| **20** | [DQL Rosetta Stone](docs/dashboard-query-languages/20-dql-guide.md) | Side-by-side KQL / Lucene / DSL comparison | 🧭 All Levels | [Module 20](docs/dashboard-query-languages/20-dql-guide.md) |
 
 ---
 
