@@ -18,6 +18,42 @@ This repository is a **Structured Study Guide** for mastering Wazuh Dashboard qu
 
 ---
 
+## 🏗️ Wazuh Ecosystem Architecture
+
+Understanding the data flow is key to effective querying. The diagram below illustrates how raw events are processed, indexed, and made available for analysis.
+
+```mermaid
+graph TD
+    subgraph "Endpoints & Cloud"
+        A[Windows Agent] -->|Logs/Sysmon| M
+        B[Linux Agent] -->|Auditd/Auth| M
+        C[AWS/GCP/Azure] -->|CloudTrail/Logs| M
+    end
+
+    subgraph "Wazuh Platform"
+        M[Wazuh Manager] -->|Alerts/Rules| I
+        I[Wazuh Indexer] -->|Search/DSL| D
+        D[Wazuh Dashboard] -->|KQL/Lucene| U[Security Analyst]
+    end
+
+    subgraph "Storage"
+        I --- S1[wazuh-alerts-*]
+        I --- S2[wazuh-archives-*]
+        I --- S3[wazuh-monitoring-*]
+    end
+
+    style M fill:#f96,stroke:#3332,stroke-width:2px
+    style I fill:#69f,stroke:#333,stroke-width:2px
+    style D fill:#6f9,stroke:#333,stroke-width:2px
+```
+
+1.  **Agents & Cloud**: Collect raw telemetry (Sysmon, Auditd, CloudTrail).
+2.  **Wazuh Manager**: Decodes logs, matches them against 4000+ rules, and triggers alerts.
+3.  **Wazuh Indexer (OpenSearch)**: Stores alerts in a distributed, high-performance search engine.
+4.  **Wazuh Dashboard**: The visualization interface where you use **KQL**, **Lucene**, and **DSL** to hunt threats.
+
+---
+
 ## 🧭 Repository Index (The Learning Path)
 
 This repository is structured as a comprehensive curriculum. Follow the modules in order or jump to specific topics using the index below.
